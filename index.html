@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/53b34e5099.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+
+    </header>
+
+    <div class="container" id="chats">
+        <div class="container-top">
+            <div class="top-left">
+                <div class="iconName">
+                    <div class="icon disposed">
+                        <img src="img/sofia.jpg" alt="" class="cover">
+                    </div>
+                    <p class="disposed">
+                        Sofia
+                    </p>
+                </div>
+                <div class="icons">
+                    <i class="fa-solid fa-circle-notch mrg-rgt-15 dark-grey"></i>
+                    <i class="fa-solid fa-message mrg-rgt-15 dark-grey"></i>
+                    <i class="fa-solid fa-ellipsis-vertical mrg-rgt-15 dark-grey"></i>
+                </div>
+            </div>
+
+            <div class="top-right">
+                <div class="iconName">
+                    <div class="icon disposed">
+                        
+                    </div>
+                    <p class="disposed">
+                        
+                    </p>
+                </div>
+                <div class="icons">
+                    <i class="fa-solid fa-magnifying-glass mrg-rgt-15 dark-grey"></i>
+                    <i class="fa-solid fa-paperclip mrg-rgt-15 dark-grey"></i>
+                    <i class="fa-solid fa-ellipsis-vertical mrg-rgt-15 dark-grey"></i>
+                </div>
+            </div>
+        </div>
+        <div class="notifiche">
+            <div class="bell">
+                <i class="fa-solid fa-bell-slash"></i>
+            </div>
+            <div class="ricevi">
+                <div>
+                    Ricevi notifiche di nuovi messaggi
+                </div>
+                <a href="">Attiva notifiche desktop</a>
+            </div>
+        </div>
+        <div class="search-bar">
+            <div class="magni-lens">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <input type="text" id="fname" name="fname" placeholder="Cerca o inizia una nuova chat" class="search">
+        </div>
+        <div class="chats">
+            <div v-for="contact in contacts" class="chat">
+                <div class="text">
+                    <div class="nameTime">
+                        <div>{{ contact.name }}</div>
+                        <div class="time">{{ contact.messages.pop().date.substr(11, 5) }}</div>
+                    </div>
+                    <div class="lastMessage" >
+                        {{ contact.messages.pop().message }}
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="chat-view">
+            
+        </div>
+
+        <div class="writeMessage">
+            <div class="smile">
+                <i class="fa-regular fa-face-smile"></i>
+            </div>
+            <input class="textMessage" type="text" placeholder="Scrivi un messaggio">
+            <div class="microphone">
+                <i class="fa-solid fa-microphone"></i>
+            </div>
+        </div>
+
+    </div>
+    
+
+
+
+
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

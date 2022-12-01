@@ -1,0 +1,230 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgb(219, 219, 210);
+}
+
+header {
+    height: 100px;
+    width: 100vw;
+    background-color: rgb(0, 150, 136);
+    position: absolute;
+    z-index: -1;
+}
+
+.container {
+    background-color: rgb(177, 177, 177);
+    height: 94%;
+    width: 82%;
+    align-self: center;
+}
+
+.container-top {
+    display: flex;
+    justify-content: space-between;
+    height: 10%;
+}
+
+.top-left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 33.3%;
+    background-color: rgb(234, 234, 234);
+}
+
+.iconName {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.top-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 66.6%;
+    background-color: rgb(234, 234, 234);
+}
+
+.icon {
+    border-radius: 50%;
+    height: 6vh;
+    width: 6vh;
+    background-color: azure;
+}
+
+.disposed {
+    margin-left: 10px;
+}
+
+.cover {
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.icons {
+    margin-right: 10px;
+}
+
+.mrg-rgt-15 {
+    margin-right: 1.2vw;
+}
+
+.dark-grey {
+    color: darkgray;
+}
+
+.notifiche {
+    display: flex;
+    align-items: center;
+    height: 12%;
+    width: 33.3%;
+    background-color: rgb(142, 218, 252);
+}
+
+.bell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    height: 8vh;
+    width: 8vh;
+    background-color: rgb(242, 251, 255);
+    border-radius: 50%;
+    margin-left: 20px;
+    color: rgb(142, 218, 252);
+}
+
+.ricevi {
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 9%;
+    width: 33.3%;
+    background-color: rgb(250, 250, 250);
+}
+
+.magni-lens {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 70%;
+    background-color: rgb(255, 255, 255);
+    color: rgb(180, 180, 180);
+    border-top: 1px solid rgb(118, 118, 118);
+    border-left: 1px solid rgb(118, 118, 118);
+    border-bottom: 1px solid rgb(118, 118, 118);
+    border-radius: 2px 0px 0px 2px;
+}
+
+.search {
+    width: 75%;
+    height: 70%;
+    padding-left: 10px;
+}
+
+.chats {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 69%;
+    width: 33.3%;
+    background-color: white;
+}
+
+.chat {
+    display: flex;
+    align-items: center;
+    height: 18%;
+    border-top: 1px solid gray;
+}
+
+.text {
+    margin-left: 10px;
+    width: 100%;
+}
+
+.nameTime {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.time {
+    padding-right: 10px;
+    font-size: 9px;
+    color: gray;
+}
+
+.lastMessage {
+    font-size: 9px;
+    margin-top: 3px;
+    color: gray;
+}
+
+.chat-view {
+    position: relative;
+    background-image: url(img/whatsapp-background.png);
+    left: 33.3%;
+    bottom: 90%;
+    height: 80%;
+    width: 66.7%;
+    overflow-y: scroll;
+}
+
+.writeMessage {
+    display: flex;
+    position: relative;
+    left: 33.3%;
+    bottom: 90%;
+    height: 10%;
+    width: 66.7%;
+    background-color: rgb(243, 238, 234);
+}
+
+.smile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: rgb(107, 115, 118);
+    width: 10%;
+}
+
+.microphone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: rgb(107, 115, 118);
+    width: 10%;
+}
+
+.textMessage {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-left: 10px;
+    width: 80%;
+    height: 70%;
+    border: none;
+    border-radius: 4px;
+}
