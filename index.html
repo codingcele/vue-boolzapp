@@ -31,14 +31,19 @@
                 </div>
             </div>
 
-            <div class="top-right">
+            <div class="top-right visibility-hidden" id="top-right">
                 <div class="iconName">
                     <div class="icon disposed">
-                        
+                        <img id="imgActive" class="icon" src="" alt="">
                     </div>
-                    <p class="disposed">
-                        
-                    </p>
+                    <div class="disposed">
+                        <div id="chatName">
+
+                        </div>
+                        <div id="chatTime">
+                            Ultimo accesso
+                        </div>
+                    </div>
                 </div>
                 <div class="icons">
                     <i class="fa-solid fa-magnifying-glass mrg-rgt-15 dark-grey"></i>
@@ -65,7 +70,10 @@
             <input type="text" id="fname" name="fname" placeholder="Cerca o inizia una nuova chat" class="search">
         </div>
         <div class="chats">
-            <div v-for="contact in contacts" class="chat">
+            <div v-for="(contact, index) in contacts" class="chat padding-top-bottom-5" @click="dealChats(index)">
+                <div class="profilePicture">
+                    <img v-bind:src="contact.avatar" alt="" class="cover">
+                </div>
                 <div class="text">
                     <div class="nameTime">
                         <div>{{ contact.name }}</div>
@@ -75,15 +83,14 @@
                         {{ contact.messages.pop().message }}
                     </div>
                 </div>
-                
             </div>
         </div>
 
-        <div class="chat-view">
+        <div class="chat-view visibility-hidden" id="chat-view">
             
         </div>
 
-        <div class="writeMessage">
+        <div class="writeMessage visibility-hidden" id="writeMessage">
             <div class="smile">
                 <i class="fa-regular fa-face-smile"></i>
             </div>

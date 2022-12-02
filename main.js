@@ -9,7 +9,7 @@ createApp({
             contacts: [
                 {
                     name: 'Michele',
-                    avatar: '_1',
+                    avatar: 'img/michele.jpg',
                     visible: true,
                     messages: [
                         {
@@ -31,7 +31,7 @@ createApp({
                 },
                 {
                     name: 'Fabio',
-                    avatar: '_2',
+                    avatar: 'img/fabio.webp',
                     visible: true,
                     messages: [
                         {
@@ -53,7 +53,7 @@ createApp({
                 },
                 {
                     name: 'Samuele',
-                    avatar: '_3',
+                    avatar: 'img/samuele.jpg',
                     visible: true,
                     messages: [
                         {
@@ -75,7 +75,7 @@ createApp({
                 },
                 {
                     name: 'Alessandro B.',
-                    avatar: '_4',
+                    avatar: 'img/alessandroB.jpg',
                     visible: true,
                     messages: [
                         {
@@ -92,7 +92,7 @@ createApp({
                 },
                 {
                     name: 'Alessandro L.',
-                    avatar: '_5',
+                    avatar: 'img/alessandroL.jpg',
                     visible: true,
                     messages: [
                         {
@@ -109,7 +109,7 @@ createApp({
                 },
                 {
                     name: 'Claudia',
-                    avatar: '_6',
+                    avatar: 'img/claudia.jpg',
                     visible: true,
                     messages: [
                         {
@@ -131,7 +131,7 @@ createApp({
                 },
                 {
                     name: 'Federico',
-                    avatar: '_7',
+                    avatar: 'img/federico.jpg',
                     visible: true,
                     messages: [
                         {
@@ -148,7 +148,7 @@ createApp({
                 },
                 {
                     name: 'Davide',
-                    avatar: '_8',
+                    avatar: 'img/davide.jpg',
                     visible: true,
                     messages: [
                         {
@@ -170,22 +170,48 @@ createApp({
                 }
             ]
         }
-    }
-    /* methods: {
-        addTask() {
-            if(this.newTask.length < 5 || this.newTask == "") {
-                this.error = true;
+    },
+    methods: {
+        dealChats(indice) {
+            let chats = document.getElementsByClassName("chat");
+            i = 0;
+            while (i < chats.length) {
+                chats[i].classList.remove("bkColor-low-grey");
+                i++;
             }
-            else {
-                this.tasks.push({ text: this.newTask, done: false })
-                this.error = false;
-            }
-            this.newTask = "";
-        },
-        deleteTask(indiceArgomento) {
-            this.tasks.splice(indiceArgomento, 1);
+            chats[indice].classList.add("bkColor-low-grey");
+            document.getElementById("top-right").classList.remove("visibility-hidden");
+            document.getElementById("chat-view").classList.remove("visibility-hidden");
+            document.getElementById("writeMessage").classList.remove("visibility-hidden");
+
+            document.getElementById("imgActive").src = this.contacts[indice].avatar;
+            
+            document.getElementById("chatName").innerHTML = this.contacts[indice].name;
+
+            /* let addOrari = function() {
+                if (el.status == "received") {
+                    orari.push(el.date);
+                }
+            } */
+
+            /* let orari = []; */
+
+            /* this.contacts[indice].messages.forEach(addOrari(el)); */
+
+            console.log(this.contacts);
+
+            /* for (el in this.contacts[indice].messages) {
+                if (el.status == "received") {
+                    orari.push(el);
+                }
+            } */
+
+            /* console.log(orari);
+
+            document.getElementById("chatTime").innerHTML += `${orari}`; */
+            
         }
-    } */
+    }
 }).mount("#chats")
 
 
