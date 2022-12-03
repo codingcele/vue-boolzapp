@@ -31,10 +31,10 @@
                 </div>
             </div>
 
-            <div class="top-right visibility-hidden" id="top-right">
+            <div class="top-right" id="top-right">
                 <div class="iconName">
                     <div class="icon disposed">
-                        <img id="imgActive" class="icon" src="" alt="">
+                        <img id="imgActive" class="icon" alt="">
                     </div>
                     <div class="disposed">
                         <div id="chatName">
@@ -70,27 +70,27 @@
             <input type="text" id="fname" name="fname" placeholder="Cerca o inizia una nuova chat" class="search">
         </div>
         <div class="chats">
-            <div v-for="(contact, index) in contacts" class="chat padding-top-bottom-5" @click="dealChats(index)">
+            <div v-for="(contact, index) in contacts" class="chat padding-top-bottom-5" :class="contact.miaClasse" @click="clicked(index)" @mouseover="hover(index)" @mouseleave="backToNormal(index)">
                 <div class="profilePicture">
                     <img v-bind:src="contact.avatar" alt="" class="cover">
                 </div>
                 <div class="text">
                     <div class="nameTime">
                         <div>{{ contact.name }}</div>
-                        <div class="time">{{ contact.messages.pop().date.substr(11, 5) }}</div>
+                        <div class="time">{{ time(index) }}</div>
                     </div>
-                    <div class="lastMessage" >
-                        {{ contact.messages.pop().message }}
+                    <div class="lastMessage">
+                        {{ lastMessage(index) }}
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="chat-view visibility-hidden" id="chat-view">
+        <div class="chat-view" id="chat-view">
             
         </div>
 
-        <div class="writeMessage visibility-hidden" id="writeMessage">
+        <div class="writeMessage" id="writeMessage">
             <div class="smile">
                 <i class="fa-regular fa-face-smile"></i>
             </div>

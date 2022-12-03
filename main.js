@@ -11,6 +11,8 @@ createApp({
                     name: 'Michele',
                     avatar: 'img/michele.jpg',
                     visible: true,
+                    miaClasse: "bk-white",
+                    clicked: false,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -27,12 +29,14 @@ createApp({
                             message: 'Tutto fatto!',
                             status: 'received'
                         }
-                    ],
+                    ]
                 },
                 {
                     name: 'Fabio',
                     avatar: 'img/fabio.webp',
                     visible: true,
+                    miaClasse: "bk-white",
+                    clicked: false,
                     messages: [
                         {
                             date: '20/03/2020 16:30:00',
@@ -49,12 +53,14 @@ createApp({
                             message: 'Mi piacerebbe ma devo andare a fare la spesa.',
                             status: 'sent'
                         }
-                    ],
+                    ]
                 },
                 {
                     name: 'Samuele',
                     avatar: 'img/samuele.jpg',
                     visible: true,
+                    miaClasse: "bk-white",
+                    clicked: false,
                     messages: [
                         {
                             date: '28/03/2020 10:10:40',
@@ -71,12 +77,14 @@ createApp({
                             message: 'Ah scusa!',
                             status: 'received'
                         }
-                    ],
+                    ]
                 },
                 {
                     name: 'Alessandro B.',
                     avatar: 'img/alessandroB.jpg',
                     visible: true,
+                    miaClasse: "bk-white",
+                    clicked: false,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -88,12 +96,14 @@ createApp({
                             message: 'Si, ma preferirei andare al cinema',
                             status: 'received'
                         }
-                    ],
+                    ]
                 },
                 {
                     name: 'Alessandro L.',
                     avatar: 'img/alessandroL.jpg',
                     visible: true,
+                    miaClasse: "bk-white",
+                    clicked: false,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -105,12 +115,14 @@ createApp({
                             message: 'Va bene, stasera la sento',
                             status: 'received'
                         }
-                    ],
+                    ]
                 },
                 {
                     name: 'Claudia',
                     avatar: 'img/claudia.jpg',
                     visible: true,
+                    miaClasse: "bk-white",
+                    clicked: false,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -127,12 +139,14 @@ createApp({
                             message: 'Nessuna nuova, buona nuova',
                             status: 'sent'
                         }
-                    ],
+                    ]
                 },
                 {
                     name: 'Federico',
                     avatar: 'img/federico.jpg',
                     visible: true,
+                    miaClasse: "bk-white",
+                    clicked: false,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -144,12 +158,14 @@ createApp({
                             message: 'Grazie per avermelo ricordato, le scrivo subito!',
                             status: 'received'
                         }
-                    ],
+                    ]
                 },
                 {
                     name: 'Davide',
                     avatar: 'img/davide.jpg',
                     visible: true,
+                    miaClasse: "bk-white",
+                    clicked: false,
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -166,13 +182,55 @@ createApp({
                             message: 'OK!!',
                             status: 'received'
                         }
-                    ],
+                    ]
                 }
             ]
         }
     },
+
     methods: {
-        dealChats(indice) {
+
+        lastMessage(index) {
+            return this.contacts[index].messages.slice(-1)[0].message;
+        },
+
+        time(index) {
+            return this.contacts[index].messages.slice(-1)[0].date.substr(11, 5);
+        },
+
+        clicked(index) {
+            this.contacts[index].clicked = true;
+            this.contacts[index].miaClasse = "bkColor-low-grey";
+            i = 0;
+            while(i < this.contacts.length) {
+                if (index != i) {
+                    this.contacts[i].miaClasse = "bk-white";
+                    this.contacts[i].clicked = false;
+                }
+                i++;
+            }
+        },
+
+        hover(index) {
+            if (this.contacts[index].clicked == false) {
+                this.contacts[index].miaClasse = "bkColor-low-low-grey";
+            }
+            i = 0;
+            while (i < this.contacts.length) {
+                if (i != index && this.contacts[i].clicked == false) {
+                    this.contacts[i].miaClasse = "bk-white";
+                }
+                i++;
+            }
+        },
+
+        backToNormal(index) {
+            if (this.contacts[index].clicked == false) {
+                this.contacts[index].miaClasse = "bk-white";
+            } 
+        }
+
+        /* dealChats(indice) {
             let chats = document.getElementsByClassName("chat");
             i = 0;
             while (i < chats.length) {
@@ -186,7 +244,7 @@ createApp({
 
             document.getElementById("imgActive").src = this.contacts[indice].avatar;
             
-            document.getElementById("chatName").innerHTML = this.contacts[indice].name;
+            document.getElementById("chatName").innerHTML = this.contacts[indice].name; */
 
             /* let addOrari = function() {
                 if (el.status == "received") {
@@ -198,7 +256,7 @@ createApp({
 
             /* this.contacts[indice].messages.forEach(addOrari(el)); */
 
-            console.log(this.contacts);
+            /* console.log(this.contacts); */
 
             /* for (el in this.contacts[indice].messages) {
                 if (el.status == "received") {
@@ -212,7 +270,7 @@ createApp({
             
         }
     }
-}).mount("#chats")
+/* } */).mount("#chats")
 
 
 
