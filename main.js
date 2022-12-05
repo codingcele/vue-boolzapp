@@ -6,6 +6,11 @@ const {
 createApp({
     data() {
         return {
+            clickedName : "",
+            clickedImg : "",
+            clickedTime : "",
+            currentMessages: [],
+            visibility : "hidden",
             contacts: [
                 {
                     name: 'Michele',
@@ -199,6 +204,12 @@ createApp({
         },
 
         clicked(index) {
+            this.clickedName = this.contacts[index].name;
+            this.clickedImg = this.contacts[index].avatar;
+            this.clickedTime = this.contacts[index].messages.slice(-1)[0].date.substr(0, 16);
+            this.currentMessages = this.contacts[index].messages;
+            this.indiceChat = index,
+            this.visibility = "visible"
             this.contacts[index].clicked = true;
             this.contacts[index].miaClasse = "bkColor-low-grey";
             i = 0;
@@ -228,49 +239,15 @@ createApp({
             if (this.contacts[index].clicked == false) {
                 this.contacts[index].miaClasse = "bk-white";
             } 
-        }
+        },
 
-        /* dealChats(indice) {
-            let chats = document.getElementsByClassName("chat");
-            i = 0;
-            while (i < chats.length) {
-                chats[i].classList.remove("bkColor-low-grey");
-                i++;
-            }
-            chats[indice].classList.add("bkColor-low-grey");
-            document.getElementById("top-right").classList.remove("visibility-hidden");
-            document.getElementById("chat-view").classList.remove("visibility-hidden");
-            document.getElementById("writeMessage").classList.remove("visibility-hidden");
-
-            document.getElementById("imgActive").src = this.contacts[indice].avatar;
-            
-            document.getElementById("chatName").innerHTML = this.contacts[indice].name; */
-
-            /* let addOrari = function() {
-                if (el.status == "received") {
-                    orari.push(el.date);
-                }
-            } */
-
-            /* let orari = []; */
-
-            /* this.contacts[indice].messages.forEach(addOrari(el)); */
-
-            /* console.log(this.contacts); */
-
-            /* for (el in this.contacts[indice].messages) {
-                if (el.status == "received") {
-                    orari.push(el);
-                }
-            } */
-
-            /* console.log(orari);
-
-            document.getElementById("chatTime").innerHTML += `${orari}`; */
-            
-        }
+        addMsg() {
+            this.contacts[this.indiceChat].messages.push({
+                date: '30/03/2020 18:51:00',
+                message: this.newMsg,
+                status: 'sent'
+            })
+            this.newMsg = "";
+        },
     }
-/* } */).mount("#chats")
-
-
-
+}).mount("#chats")

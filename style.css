@@ -180,6 +180,8 @@ header {
 }
 
 .chat-view {
+    display: flex;
+    flex-direction: column;
     position: relative;
     background-image: url(img/whatsapp-background.png);
     left: 33.3%;
@@ -187,6 +189,7 @@ header {
     height: 80%;
     width: 66.7%;
     overflow-y: scroll;
+    padding: 15px 30px 0px 30px;
 }
 
 .writeMessage {
@@ -239,8 +242,12 @@ header {
     padding-bottom: 5px;
 }
 
-.visibility-hidden {
+.hidden {
     visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
 }
 
 .bk-white {
@@ -261,4 +268,36 @@ header {
 
 #chatTime {
     font-size: 10px;
+}
+
+.message {
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    max-width: 400px;
+    line-height: 22px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.received {
+    align-self: start;
+    background-color: white;
+}
+
+.sent {
+    align-self: end;
+    background-color: rgb(139, 228, 139);
+}
+
+.msgTime {
+    position: relative;
+    left: calc(100% - 40px);
+    text-align: center;
+    width: 45px;
+    right: 0px;
+    font-size: 10px;
+    padding-bottom: 0px;
+    color: gray;
 }

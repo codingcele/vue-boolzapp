@@ -31,17 +31,17 @@
                 </div>
             </div>
 
-            <div class="top-right" id="top-right">
+            <div class="top-right" id="top-right" :class="visibility">
                 <div class="iconName">
                     <div class="icon disposed">
-                        <img id="imgActive" class="icon" alt="">
+                        <img id="imgActive" class="icon" alt="" v-bind:src="clickedImg">
                     </div>
                     <div class="disposed">
                         <div id="chatName">
-
+                            {{ clickedName }}
                         </div>
                         <div id="chatTime">
-                            Ultimo accesso
+                            Ultimo accesso <span>{{ clickedTime }}</span>
                         </div>
                     </div>
                 </div>
@@ -86,15 +86,20 @@
             </div>
         </div>
 
-        <div class="chat-view" id="chat-view">
-            
+        <div class="chat-view" id="chat-view" :class="visibility">
+            <div v-for="msg in currentMessages" class="message" :class="msg.status">
+                {{ msg.message }}
+                <div class="msgTime">
+                    {{ msg.date.substr(11, 5) }}
+                </div>
+            </div>
         </div>
 
-        <div class="writeMessage" id="writeMessage">
+        <div class="writeMessage" id="writeMessage" :class="visibility">
             <div class="smile">
                 <i class="fa-regular fa-face-smile"></i>
             </div>
-            <input class="textMessage" type="text" placeholder="Scrivi un messaggio">
+            <input class="textMessage" type="text" placeholder="Scrivi un messaggio" v-model="newMsg" @KeyUp.enter="addMsg">
             <div class="microphone">
                 <i class="fa-solid fa-microphone"></i>
             </div>
