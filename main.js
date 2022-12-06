@@ -6,10 +6,11 @@ const {
 createApp({
     data() {
         return {
-            clickedName : "",
+            indiceChat : 0,
+            /* clickedName : "",
             clickedImg : "",
             clickedTime : "",
-            currentMessages: [],
+            currentMessages: [], */
             visibility : "hidden",
             contacts: [
                 {
@@ -195,19 +196,11 @@ createApp({
 
     methods: {
 
-        lastMessage(index) {
-            return this.contacts[index].messages.slice(-1)[0].message;
-        },
-
-        time(index) {
-            return this.contacts[index].messages.slice(-1)[0].date.substr(11, 5);
-        },
-
         clicked(index) {
-            this.clickedName = this.contacts[index].name;
+            /* this.clickedName = this.contacts[index].name;
             this.clickedImg = this.contacts[index].avatar;
             this.clickedTime = this.contacts[index].messages.slice(-1)[0].date.substr(0, 16);
-            this.currentMessages = this.contacts[index].messages;
+            this.currentMessages = this.contacts[index].messages; */
             this.indiceChat = index,
             this.visibility = "visible"
             this.contacts[index].clicked = true;

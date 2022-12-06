@@ -34,14 +34,14 @@
             <div class="top-right" id="top-right" :class="visibility">
                 <div class="iconName">
                     <div class="icon disposed">
-                        <img id="imgActive" class="icon" alt="" v-bind:src="clickedImg">
+                        <img id="imgActive" class="icon" alt="" v-bind:src= "contacts[indiceChat].avatar">
                     </div>
                     <div class="disposed">
                         <div id="chatName">
-                            {{ clickedName }}
+                            {{ contacts[indiceChat].name }}
                         </div>
                         <div id="chatTime">
-                            Ultimo accesso <span>{{ clickedTime }}</span>
+                            Ultimo accesso <span>{{ contacts[indiceChat].messages.slice(-1)[0].date.substr(0, 16) }}</span>
                         </div>
                     </div>
                 </div>
@@ -77,17 +77,17 @@
                 <div class="text">
                     <div class="nameTime">
                         <div>{{ contact.name }}</div>
-                        <div class="time">{{ time(index) }}</div>
+                        <div class="time">{{ contact.messages.slice(-1)[0].date.substr(11, 5) }}</div>
                     </div>
                     <div class="lastMessage">
-                        {{ lastMessage(index) }}
+                        {{ contact.messages.slice(-1)[0].message }}
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="chat-view" id="chat-view" :class="visibility">
-            <div v-for="msg in currentMessages" class="message" :class="msg.status">
+            <div v-for="msg in contacts[indiceChat].messages" class="message" :class="msg.status">
                 {{ msg.message }}
                 <div class="msgTime">
                     {{ msg.date.substr(11, 5) }}
