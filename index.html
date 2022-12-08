@@ -64,10 +64,10 @@
             </div>
         </div>
         <div class="search-bar">
-            <div class="magni-lens">
+            <div class="magni-lens" @click="cercaChat">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-            <input type="text" id="fname" name="fname" placeholder="Cerca o inizia una nuova chat" class="search">
+            <input type="text" class="search" id="fname" name="fname" placeholder="Cerca o inizia una nuova chat" v-model="cerca">
         </div>
         <div class="chats">
             <div v-for="(contact, index) in contacts" class="chat padding-top-bottom-5" :class="contact.miaClasse" @click="clicked(index)" @mouseover="hover(index)" @mouseleave="backToNormal(index)">

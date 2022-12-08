@@ -7,10 +7,6 @@ createApp({
     data() {
         return {
             indiceChat : 0,
-            /* clickedName : "",
-            clickedImg : "",
-            clickedTime : "",
-            currentMessages: [], */
             visibility : "hidden",
             contacts: [
                 {
@@ -197,12 +193,8 @@ createApp({
     methods: {
 
         clicked(index) {
-            /* this.clickedName = this.contacts[index].name;
-            this.clickedImg = this.contacts[index].avatar;
-            this.clickedTime = this.contacts[index].messages.slice(-1)[0].date.substr(0, 16);
-            this.currentMessages = this.contacts[index].messages; */
-            this.indiceChat = index,
-            this.visibility = "visible"
+            this.indiceChat = index;
+            this.visibility = "visible";
             this.contacts[index].clicked = true;
             this.contacts[index].miaClasse = "bkColor-low-grey";
             i = 0;
@@ -221,7 +213,7 @@ createApp({
             }
             i = 0;
             while (i < this.contacts.length) {
-                if (i != index && this.contacts[i].clicked == false) {
+                if (i != index && this.contacts[i].clicked == false && !this.contacts[i].miaClasse.includes("none")) {
                     this.contacts[i].miaClasse = "bk-white";
                 }
                 i++;
@@ -241,6 +233,24 @@ createApp({
                 status: 'sent'
             })
             this.newMsg = "";
+            let currentChat = this.contacts[this.indiceChat].messages;
+            function ok() {
+                currentChat.push({
+                    date: '30/03/2020 18:51:05',
+                    message: "ok",
+                    status: 'received'
+                })
+            }
+            setTimeout(ok, 2000);
         },
+
+        cercaChat() {
+            console.log(this.cerca);
+            for (let i = 0; i < this.contacts.length; i++) {
+                if (!this.contacts[i].name.includes(this.cerca)) {
+                    this.contacts[i].miaClasse = "bk-white none";
+                }
+            }
+        }
     }
 }).mount("#chats")

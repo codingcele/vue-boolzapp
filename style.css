@@ -133,6 +133,7 @@ header {
     border-left: 1px solid rgb(118, 118, 118);
     border-bottom: 1px solid rgb(118, 118, 118);
     border-radius: 2px 0px 0px 2px;
+    cursor: pointer;
 }
 
 .search {
@@ -154,6 +155,7 @@ header {
     display: flex;
     align-items: center;
     border-top: 1px solid gray;
+    cursor: pointer;
 }
 
 .text {
@@ -300,4 +302,12 @@ header {
     font-size: 10px;
     padding-bottom: 0px;
     color: gray;
+}
+
+.block {
+    display: block;
+}
+
+.none {
+    display: none;
 }
