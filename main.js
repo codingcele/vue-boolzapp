@@ -231,19 +231,25 @@ createApp({
                 date: '30/03/2020 18:51:00',
                 message: this.newMsg,
                 status: 'sent'
-            })
+            });
             this.newMsg = "";
+            this.ok();
+        },
+        ok() {
             let currentChat = this.contacts[this.indiceChat].messages;
             function ok() {
                 currentChat.push({
                     date: '30/03/2020 18:51:05',
                     message: "ok",
                     status: 'received'
-                })
+                });
             }
-            setTimeout(ok, 2000);
+            setTimeout(ok, 1500);
         },
-
+        updateScroll() {
+            let element = document.getElementById("chat-view");
+            element.scrollTop = element.scrollHeight;
+        },
         cercaChat() {
             console.log(this.cerca);
             for (let i = 0; i < this.contacts.length; i++) {
@@ -252,5 +258,8 @@ createApp({
                 }
             }
         }
-    }
+    },
+    updated() {
+        this.updateScroll();
+      }
 }).mount("#chats")

@@ -311,3 +311,9 @@ header {
 .none {
     display: none;
 }
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 999px;
+    border: 20px solid rgba(0,0,0,0);
+}
