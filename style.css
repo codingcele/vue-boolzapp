@@ -58,8 +58,8 @@ header {
 
 .icon {
     border-radius: 50%;
-    height: 6vh;
-    width: 6vh;
+    height: 7vh;
+    width: 7vh;
     background-color: azure;
 }
 
@@ -89,7 +89,7 @@ header {
 .notifiche {
     display: flex;
     align-items: center;
-    height: 12%;
+    min-height: 12%;
     width: 33.3%;
     background-color: rgb(142, 218, 252);
 }
@@ -145,7 +145,7 @@ header {
 .chats {
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 69%;
     width: 33.3%;
     background-color: white;
@@ -273,14 +273,18 @@ header {
 }
 
 .message {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: auto;
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 0px;
-    max-width: 400px;
+    max-width: 500px;
     line-height: 22px;
     border-radius: 10px;
     margin: 10px;
+    overflow-wrap: break-word;
 }
 
 .received {
@@ -294,13 +298,8 @@ header {
 }
 
 .msgTime {
-    position: relative;
-    left: calc(100% - 40px);
-    text-align: center;
-    width: 45px;
-    right: 0px;
+    align-self: end;
     font-size: 10px;
-    padding-bottom: 0px;
     color: gray;
 }
 
@@ -312,8 +311,71 @@ header {
     display: none;
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: rgba(0,0,0,0.2);
-    border-radius: 999px;
-    border: 20px solid rgba(0,0,0,0);
+.notActive {
+    z-index: -99;
 }
+
+.active {
+    z-index: 99;
+}
+
+.lens {
+    position: relative;
+    left: 10%;
+}
+
+.arrow {
+    position: relative;
+    right: 10%;
+}
+
+.v-down {
+    position: relative;
+    visibility: hidden;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.v-down:hover {
+    cursor: pointer;
+}
+
+.message:hover .v-down {
+    visibility: visible;
+}
+
+.delMsg {
+    position: absolute;
+    min-width: 130px;
+    top: 120%;
+    left: -500%;
+    padding: 6px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    font-family: verdana;
+    font-weight: 100;
+    color: black;
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+
+::-webkit-scrollbar {
+    width: 6px;
+  }
+
+::-webkit-scrollbar:hover {
+    display: block;
+  }

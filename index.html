@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/53b34e5099.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>BoolZapp</title>
 </head>
 <body>
+
     <header>
 
     </header>
 
-    <div class="container" id="chats">
+    <div class="container fixed" id="chats">
         <div class="container-top">
             <div class="top-left">
                 <div class="iconName">
@@ -34,13 +35,13 @@
             <div class="top-right" id="top-right" :class="visibility">
                 <div class="iconName">
                     <div class="icon disposed">
-                        <img id="imgActive" class="icon" alt="" v-bind:src= "contacts[indiceChat].avatar">
+                        <img class="icon cover" alt="" v-bind:src= "contacts[indiceChat].avatar">
                     </div>
                     <div class="disposed">
                         <div id="chatName">
                             {{ contacts[indiceChat].name }}
                         </div>
-                        <div id="chatTime">
+                        <div id="chatTime" v-if="contacts[indiceChat].messages.length != 0">
                             Ultimo accesso <span>{{ contacts[indiceChat].messages.slice(-1)[0].date.substr(0, 16) }}</span>
                         </div>
                     </div>
@@ -60,14 +61,15 @@
                 <div>
                     Ricevi notifiche di nuovi messaggi
                 </div>
-                <a href="">Attiva notifiche desktop</a>
+                <a href="#">Attiva notifiche desktop</a>
             </div>
         </div>
         <div class="search-bar">
-            <div class="magni-lens" @click="cercaChat">
-                <i class="fa-solid fa-magnifying-glass"></i>
+            <div class="magni-lens">
+                <i v-bind:class="{ active: !showArrow }" @click="focusSearchInput"  class="fa-solid fa-magnifying-glass notActive lens"></i>
+                <i v-bind:class="{ active: showArrow }" class="fa-solid fa-arrow-left notActive arrow"></i>
             </div>
-            <input type="text" class="search" id="fname" name="fname" placeholder="Cerca o inizia una nuova chat" v-model="cerca">
+            <input type="text" @focus="showArrow = true" @blur="showArrow = false" class="search" id="fname" v-model="search" ref="searchInput" @input="cercaChat" name="fname" placeholder="Cerca o inizia una nuova chat">
         </div>
         <div class="chats">
             <div v-for="(contact, index) in contacts" class="chat padding-top-bottom-5" :class="contact.miaClasse" @click="clicked(index)" @mouseover="hover(index)" @mouseleave="backToNormal(index)">
@@ -77,20 +79,27 @@
                 <div class="text">
                     <div class="nameTime">
                         <div>{{ contact.name }}</div>
-                        <div class="time">{{ contact.messages.slice(-1)[0].date.substr(11, 5) }}</div>
+                        <div class="time" v-if="contact.messages.slice(-1)[0]">{{ contact.messages.slice(-1)[0].date.substr(11, 5) }}</div>
                     </div>
-                    <div class="lastMessage">
-                        {{ contact.messages.slice(-1)[0].message }}
+                    <div v-if="contact.messages.length != 0" class="lastMessage">
+                        {{ contact.messages.slice(-1)[0].message.length > 50 ? contact.messages.slice(-1)[0].message.slice(0, 50) + '...' : contact.messages.slice(-1)[0].message }}
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="chat-view" id="chat-view" :class="visibility">
-            <div v-for="msg in contacts[indiceChat].messages" class="message" :class="msg.status">
+            <div v-for="(msg, index) in contacts[indiceChat].messages" v-if="contacts[indiceChat].messages" class="message" :class="msg.status" @mouseleave="msg.delOpt = false">
                 {{ msg.message }}
                 <div class="msgTime">
-                    {{ msg.date.substr(11, 5) }}
+                    <span>
+                        <i @click="changeDelOpt(index)" class="fa-solid fa-chevron-down v-down">
+                            <div @click="delMsg(index)" v-bind:class="{ visible: msg.delOpt }" class="delMsg">
+                                Delete message
+                            </div>
+                        </i>
+                    </span>
+                    <span v-if="msg.date">{{ msg.date.substr(11, 5) }}</span> 
                 </div>
             </div>
         </div>
